@@ -4,18 +4,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+//import io.swagger.annotations.ApiModelProperty;
 
 
 @ApiModel(description="Customer Details Model")
@@ -29,8 +26,7 @@ public class Customer {
 	private Long custId;
 
 	@Column(name = "cust_name")
-	@Size(max=20,min=2, message="Name must have atleast 2 characters and max 20 characters")
-	@ApiModelProperty(notes="Customer name property",dataType="String")
+	@Size(max=20,min=2)
 	private String custName;
 
 	@Column(name = "city")
@@ -39,7 +35,9 @@ public class Customer {
 	@Column(name="age")
 	@Min(value=21, message="Age must be equal or greater than 21")
 	@Max(value=60, message="Age must be equal or less than 60")
-	@ApiModelProperty(value="This is age description")
+//	@ApiModelProperty(notes="Customer age property",
+//						dataType="Integer", 
+//						allowableValues="range[20,60]")
 	private Integer age;
 	
 	@Size(max=12, min=10)
@@ -104,6 +102,4 @@ public class Customer {
 	}
 
 }
-//@ApiModelProperty(notes="Customer age property",
-//dataType="Integer", 
-//allowableValues="range[20,60]")
+
