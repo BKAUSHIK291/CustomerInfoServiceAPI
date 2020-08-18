@@ -26,7 +26,7 @@ public class Customer {
 	private Long custId;
 
 	@Column(name = "cust_name")
-	@Size(max=20,min=2)
+	@Size(max=20,min=2, message="Enter a valid name. Allowed characters between 2 to 20.")
 	private String custName;
 
 	@Column(name = "city")
@@ -40,7 +40,7 @@ public class Customer {
 //						allowableValues="range[20,60]")
 	private Integer age;
 	
-	@Size(max=12, min=10)
+	@Size(max=10, min=10, message="Enter valid 10 digit phone number")
 	@Column(name = "phone")
 	private String phone;
 
