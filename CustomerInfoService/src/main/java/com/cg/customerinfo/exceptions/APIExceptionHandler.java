@@ -10,10 +10,13 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-@ControllerAdvice
+import io.swagger.annotations.ApiResponses;
+
+@RestControllerAdvice
 public class APIExceptionHandler extends ResponseEntityExceptionHandler{
 
 	@ExceptionHandler(Exception.class)
@@ -24,6 +27,7 @@ public class APIExceptionHandler extends ResponseEntityExceptionHandler{
         return new ResponseEntity(exResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
  
+	
     @ExceptionHandler(RecordNotFoundException.class)
     public final ResponseEntity<Object> handleUserNotFoundException(RecordNotFoundException ex, WebRequest request) {
         List<String> details = new ArrayList<>();

@@ -43,7 +43,9 @@ public class CustomerService {
 	public ResponseEntity<Customer> deleteCustomerById(Long custId) {
 		Customer existingCust = custRepository.findById(custId)
 				.orElseThrow(() -> new RecordNotFoundException("User not found with id: " + custId));
+		
 		this.custRepository.delete(existingCust);
+		
 		return ResponseEntity.ok().build();
 	}
 
